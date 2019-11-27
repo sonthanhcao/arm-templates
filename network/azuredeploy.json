@@ -319,6 +319,9 @@
                         "apiVersion": "2018-09-01",
                         "name": "[parameters('privateDnsZones_name')]",
                         "location": "global",
+                        "dependsOn": [
+                            "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnet-name'))]"
+                        ],
                         "properties": {
                             "maxNumberOfRecordSets": 25000,
                             "maxNumberOfVirtualNetworkLinks": 1000,
@@ -340,7 +343,7 @@
                         "properties": {
                             "registrationEnabled": true,
                             "virtualNetwork": {
-                                "id": "[resourceId('Microsoft.Network/routeTables', parameters('vnet-name'))]"
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnet-name'))]"
                             }
                         }
                     }
