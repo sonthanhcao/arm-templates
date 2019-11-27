@@ -3,70 +3,92 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vnet-name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "sea-vnet"
         },
         "vnet-addressPrefix": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "10.0.0.0/20"
         },
         "public-subnetName-a": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "public-a"
         },
         "public-subnetName-b": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "public-b"
         },
         "private-subnetName-a": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "private-a"
         },
         "private-subnetName-b": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "private-b"
         },
         "dmz-subnetName-a": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "dmz-subnet-a"
         },
         "public-subnetAddressPrefix-a": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "10.0.1.0/24"
         },
         "public-subnetAddressPrefix-b": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "10.0.3.0/24"
         },
         "private-subnetAddressPrefix-a": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "10.0.2.0/24"
         },
         "private-subnetAddressPrefix-b": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "10.0.4.0/24"
         },
         "dmz-subnetAddressPrefix-a": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "10.0.0.0/24"
         },
         "networkSecurityGroups_public_a_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "public-nsg-a"
         },
         "networkSecurityGroups_public_b_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "public-nsg-b"
         },
         "networkSecurityGroups_private_a_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "private-nsg-a"
         },
         "networkSecurityGroups_private_b_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "private-nsg-b"
         },
         "networkSecurityGroups_dmz_a_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "dmz-nsg-b"
         },
         "routeTables_public_a_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "public-route-a"
         },
         "routeTables_public_b_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "public-route-b"
         },
         "routeTables_private_a_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "private-route-a"
         },
         "routeTables_private_b_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "private-route-b"
         },
         "routeTables_dmz_a_name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "dmz-route-a"
         }
     },
     "resources": [
