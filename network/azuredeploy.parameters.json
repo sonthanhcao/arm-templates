@@ -1,0 +1,72 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnet-name": {
+            "value": "sea-vnet"
+        },
+        "vnet-addressPrefix": {
+            "value": "10.0.0.0/20"
+        },
+        "public-subnetName-a": {
+            "value": "public-a"
+        },
+        "public-subnetName-b": {
+            "value": "public-b"
+        },
+        "private-subnetName-a": {
+            "value": "private-a"
+        },
+        "private-subnetName-b": {
+            "value": "private-b"
+        },
+        "dmz-subnetName-a": {
+            "value": "dmz-subnet-a"
+        },
+        "public-subnetAddressPrefix-a": {
+            "value": "10.0.1.0/24"
+        },
+        "public-subnetAddressPrefix-b": {
+            "value": "10.0.3.0/24"
+        },
+        "private-subnetAddressPrefix-a": {
+            "value": "10.0.2.0/24"
+        },
+        "private-subnetAddressPrefix-b": {
+            "value": "10.0.4.0/24"
+        },
+        "dmz-subnetAddressPrefix-a": {
+            "value": "10.0.0.0/24"
+        },
+        "networkSecurityGroups_public_a_name": {
+            "value": "public-nsg-a"
+        },
+        "networkSecurityGroups_public_b_name": {
+            "value": "public-nsg-b"
+        },
+        "networkSecurityGroups_private_a_name": {
+            "value": "private-nsg-a"
+        },
+        "networkSecurityGroups_private_b_name": {
+            "value": "private-nsg-b"
+        },
+        "networkSecurityGroups_dmz_a_name": {
+            "value": "dmz-nsg-b"
+        },
+        "routeTables_public_a_name": {
+            "value": "public-route-a"
+        },
+        "routeTables_public_b_name": {
+            "value": "public-route-b"
+        },
+        "routeTables_private_a_name": {
+            "value": "private-route-a"
+        },
+        "routeTables_private_b_name": {
+            "value": "private-route-b"
+        },
+        "routeTables_dmz_a_name": {
+            "value": "dmz-route-a"
+        }
+    }
+  }

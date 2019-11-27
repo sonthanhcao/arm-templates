@@ -1,0 +1,297 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vnet-name": {
+            "type": "string"
+        },
+        "vnet-addressPrefix": {
+            "type": "string"
+        },
+        "public-subnetName-a": {
+            "type": "string"
+        },
+        "public-subnetName-b": {
+            "type": "string"
+        },
+        "private-subnetName-a": {
+            "type": "string"
+        },
+        "private-subnetName-b": {
+            "type": "string"
+        },
+        "dmz-subnetName-a": {
+            "type": "string"
+        },
+        "public-subnetAddressPrefix-a": {
+            "type": "string"
+        },
+        "public-subnetAddressPrefix-b": {
+            "type": "string"
+        },
+        "private-subnetAddressPrefix-a": {
+            "type": "string"
+        },
+        "private-subnetAddressPrefix-b": {
+            "type": "string"
+        },
+        "dmz-subnetAddressPrefix-a": {
+            "type": "string"
+        },
+        "networkSecurityGroups_public_a_name": {
+            "type": "string"
+        },
+        "networkSecurityGroups_public_b_name": {
+            "type": "string"
+        },
+        "networkSecurityGroups_private_a_name": {
+            "type": "string"
+        },
+        "networkSecurityGroups_private_b_name": {
+            "type": "string"
+        },
+        "networkSecurityGroups_dmz_a_name": {
+            "type": "string"
+        },
+        "routeTables_public_a_name": {
+            "type": "string"
+        },
+        "routeTables_public_b_name": {
+            "type": "string"
+        },
+        "routeTables_private_a_name": {
+            "type": "string"
+        },
+        "routeTables_private_b_name": {
+            "type": "string"
+        },
+        "routeTables_dmz_a_name": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('networkSecurityGroups_public_a_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('networkSecurityGroups_public_b_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('networkSecurityGroups_private_a_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "BlockInternet",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "10.0.2.0/24",
+                            "destinationAddressPrefix": "Internet",
+                            "access": "Deny",
+                            "priority": 4000,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('networkSecurityGroups_private_b_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": [
+                    {
+                        "name": "BlockInternet",
+                        "properties": {
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "10.0.4.0/24",
+                            "destinationAddressPrefix": "Internet",
+                            "access": "Deny",
+                            "priority": 4000,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            }
+        },
+                {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('networkSecurityGroups_dmz_a_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "securityRules": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/routeTables",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('routeTables_public_a_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "disableBgpRoutePropagation": false,
+                "routes": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/routeTables",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('routeTables_public_b_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "disableBgpRoutePropagation": false,
+                "routes": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/routeTables",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('routeTables_private_a_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "disableBgpRoutePropagation": false,
+                "routes": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/routeTables",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('routeTables_private_b_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "disableBgpRoutePropagation": false,
+                "routes": []
+            }
+        },
+        {
+            "type": "Microsoft.Network/routeTables",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('routeTables_dmz_a_name')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "disableBgpRoutePropagation": false,
+                "routes": []
+            }
+        },
+        {
+            "name": "[parameters('vnet-name')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2015-06-15",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_public_a_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_public_b_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_private_a_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_private_b_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_dmz_a_name'))]",
+                "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_public_a_name'))]",
+                "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_public_b_name'))]",
+                "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_private_a_name'))]",
+                "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_private_b_name'))]",
+                "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_dmz_a_name'))]"
+            ],
+            "tags": {
+                "displayName": "sea-net"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('vnet-addressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('public-subnetName-a')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('public-subnetAddressPrefix-a')]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_public_a_name'))]"
+                            },
+                            "routeTable": {
+                                "id": "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_public_a_name'))]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "[parameters('public-subnetName-b')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('public-subnetAddressPrefix-b')]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_public_b_name'))]"
+                            },
+                            "routeTable": {
+                                "id": "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_public_b_name'))]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "[parameters('private-subnetName-a')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('private-subnetAddressPrefix-a')]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_private_a_name'))]"
+                            },
+                            "routeTable": {
+                                "id": "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_private_a_name'))]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "[parameters('private-subnetName-b')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('private-subnetAddressPrefix-b')]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_private_b_name'))]"
+                            },
+                            "routeTable": {
+                                "id": "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_private_b_name'))]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "[parameters('dmz-subnetName-a')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('dmz-subnetAddressPrefix-a')]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_dmz_a_name'))]"
+                            },
+                            "routeTable": {
+                                "id": "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_dmz_a_name'))]"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "variables": {
+    }
+}
