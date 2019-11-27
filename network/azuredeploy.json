@@ -330,7 +330,7 @@
                         }
                     },
                     {
-                        "type": "Microsoft.Network/privateDgitnsZones/virtualNetworkLinks",
+                        "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
                         "apiVersion": "2018-09-01",
                         "name": "[concat(parameters('privateDnsZones_name'), parameters('vnet-name'))]",
                         "location": "global",
@@ -341,7 +341,6 @@
                             "registrationEnabled": true,
                             "virtualNetwork": {
                                 "id": "[resourceId('Microsoft.Network/routeTables', parameters('vnet-name'))]"
-                                
                             }
                         }
                     }
