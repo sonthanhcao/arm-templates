@@ -335,7 +335,7 @@
         {
             "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
             "apiVersion": "2018-09-01",
-            "name": "[concat(parameters('privateDnsZones_name'), parameters('vnet-name'))]",
+            "name": "[parameters('vnet-name')]",
             "location": "global",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZones_name'))]"
