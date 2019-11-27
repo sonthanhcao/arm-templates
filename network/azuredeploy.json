@@ -313,24 +313,6 @@
                                 "id": "[resourceId('Microsoft.Network/routeTables', parameters('routeTables_dmz_a_name'))]"
                             }
                         }
-                    },
-                    {
-                        "type": "Microsoft.Network/privateDnsZones",
-                        "apiVersion": "2018-09-01",
-                        "name": "[parameters('privateDnsZones_name')]",
-                        "location": "global",
-                        "dependsOn": [
-                            "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnet-name'))]"
-                        ],
-                        "properties": {
-                            "maxNumberOfRecordSets": 25000,
-                            "maxNumberOfVirtualNetworkLinks": 1000,
-                            "maxNumberOfVirtualNetworkLinksWithRegistration": 100,
-                            "numberOfRecordSets": 3,
-                            "numberOfVirtualNetworkLinks": 1,
-                            "numberOfVirtualNetworkLinksWithRegistration": 1,
-                            "provisioningState": "Succeeded"
-                        }
                     }
                 ]
             }
