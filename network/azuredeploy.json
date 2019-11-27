@@ -331,6 +331,22 @@
                 "numberOfVirtualNetworkLinksWithRegistration": 1,
                 "provisioningState": "Succeeded"
             }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+            "apiVersion": "2018-09-01",
+            "name": "[concat(parameters('privateDnsZones_name'), '/', parameters('vnet-name'))]",
+            "location": "global",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateDnsZones_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnet-name'))]"
+            ],
+            "properties": {
+                "registrationEnabled": true,
+                "virtualNetwork": {
+                    "id": "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnet-name'))]"
+                }
+            }
         }
     ],
     "variables": {
