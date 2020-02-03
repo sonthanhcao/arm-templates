@@ -1,0 +1,7 @@
+secret.sh
+akstemplate/
+scripts/
+network/deploy.sh
+network/destroy.sh
+oneline.py
+rkevm/

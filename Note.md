@@ -1,0 +1,1 @@
+https://www.wintellect.com/arm-templates-and-cloud-init/
