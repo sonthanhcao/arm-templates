@@ -67,6 +67,9 @@
         },
         "routeTables_dmz_a_name": {
             "value": "dmz-route-a"
+        },
+        "privateDnsZones_name": {
+            "value": "sc.com"
         }
     }
   }

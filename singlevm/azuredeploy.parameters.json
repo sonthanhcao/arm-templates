@@ -1,0 +1,89 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "southeastasia"
+        },
+        "networkInterfaceName": {
+            "value": "scubuntu802"
+        },
+        "networkSecurityGroupName": {
+            "value": "scubuntu-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "SSH",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "22"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "virtualNetworkName": {
+            "value": "Test-vnet"
+        },
+        "addressPrefixes": {
+            "value": [
+                "10.1.2.0/24"
+            ]
+        },
+        "subnets": {
+            "value": [
+                {
+                    "name": "default",
+                    "properties": {
+                        "addressPrefix": "10.1.2.0/24"
+                    }
+                }
+            ]
+        },
+        "publicIpAddressName": {
+            "value": "scubuntu-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "scubuntu"
+        },
+        "virtualMachineRG": {
+            "value": "Test"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_B1s"
+        },
+        "adminUsername": {
+            "value": "azadmin"
+        },
+        "adminPassword": {
+            "value": "Ntc@123#2019"
+        },
+        "customData": {
+            "value": "[base64(concat('#cloud-config\nruncmd:\n - echo \"Created by Azure terraform-vmss-cloudinit module.\" | sudo dd of=/tmp/terraformtest2 &> /dev/null\n - [ sh, -c, \"curl -sSL https://kiddevelopment.blob.core.windows.net/scripts/startup.sh | sh\" ]'))]"
+        },
+        "cloudiniturl": {
+            "value": "https://kiddevelopment.blob.core.windows.net/cloudinit/"
+        },
+        "cloudinittoken": {
+            "value": ""
+        }
+    }
+}
